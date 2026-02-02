@@ -1,16 +1,17 @@
-import Utils from '../utils.js';
-import SportsApi from '../data/remote/sports.api.js';
+import Utils from "../utils.js";
+import SportsApi from "../data/remote/sports.api.js";
 
 const home = () => {
-  const searchFormElement = document.querySelector('search-bar');
+  const searchFormElement = document.querySelector("search-bar");
 
-  const clubListContainerElement = document.querySelector('#clubListContainer');
+  const clubListContainerElement = document.querySelector("#clubListContainer");
   const clubQueryWaitingElement =
-    clubListContainerElement.querySelector('.query-waiting');
-  const clubLoadingElement = clubListContainerElement.querySelector('.search-loading');
+    clubListContainerElement.querySelector(".query-waiting");
+  const clubLoadingElement =
+    clubListContainerElement.querySelector(".search-loading");
   const clubSearchErrorElement =
-    clubListContainerElement.querySelector('club-search-error');
-  const clubListElement = clubListContainerElement.querySelector('club-list');
+    clubListContainerElement.querySelector("club-search-error");
+  const clubListElement = clubListContainerElement.querySelector("club-list");
 
   const showSportClub = async (query) => {
     showLoading();
@@ -21,8 +22,11 @@ const home = () => {
 
       showClubList();
     } catch (error) {
-       console.log('Error caught:', error.message);
-      clubSearchErrorElement.textContent = error.message;
+      console.log("Error caught:", error.message);
+      clubSearchErrorElement.innerHTML = `<div>
+        <h2 class="placeholder">Error</h2>
+        <p>${error.message}</p>
+      </div>`;
       showSearchError();
     }
   };
@@ -36,7 +40,7 @@ const home = () => {
 
   const displayResult = (clubs) => {
     const clubItemElements = clubs.map((club) => {
-      const clubItemElement = document.createElement('club-item');
+      const clubItemElement = document.createElement("club-item");
       clubItemElement.club = club;
 
       return clubItemElement;
@@ -74,7 +78,7 @@ const home = () => {
     Utils.showElement(clubSearchErrorElement);
   };
 
-  searchFormElement.addEventListener('search', onSearchHandler);
+  searchFormElement.addEventListener("search", onSearchHandler);
   showQueryWaiting();
 };
 
