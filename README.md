@@ -15,7 +15,7 @@ Error display when no clubs are found or API request fails.
 
 📁 Project Structure
 --
-
+```
 sport-club-finder/
 
 ├── src/
@@ -74,7 +74,7 @@ sport-club-finder/
 ├── package.json                 # Dependencies & scripts
 
 └── README.md
-
+```
 ## 🛠️ Technologies Used
 
     Vanilla JavaScript (ES6+)
